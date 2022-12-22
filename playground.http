@@ -8,7 +8,7 @@ content-type: application/json
 
 #####
 
-POST https://funcion-privada-9u35gqshc-lucianodelucchi.vercel.app/api/webhook
+POST https://funcion-privada-nc3lv9bk5-lucianodelucchi.vercel.app/api/webhook
 content-type: application/json
 
 {
