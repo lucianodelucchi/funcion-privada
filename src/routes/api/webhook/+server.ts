@@ -1,10 +1,10 @@
-import { VITE_VERCEL_URL } from '$env/dynamic/private';
+import { env } from '$env/dynamic/private';
 import { bot } from  '$lib/server/bot';
 import { error, type RequestEvent } from '@sveltejs/kit';
 
 export async function POST({request}: RequestEvent) {
     const { webhook_url } = await request.json();
-    const webhookUrl = VITE_VERCEL_URL ?? webhook_url;
+    const webhookUrl = env?.VITE_VERCEL_URL ?? webhook_url;
     
     if (!webhookUrl) {
         throw error(500);
