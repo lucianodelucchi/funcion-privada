@@ -1,24 +1,13 @@
 import { Bot } from 'grammy';
-import { BOT_TOKEN } from '$env/static/private';
-import type { UserFromGetMe } from 'grammy/out/types';
+import { BOT_INFO, BOT_TOKEN } from '$env/static/private';
 import { configuration, imagesForMovie, search } from  '$lib/server/tmdb';
 
 function addSlashes(str: string) {
   return (str + '').replace(/[_*[\]()~`>#+\-=|{}.!]/g, '\\$&');
 }
 
-const userFromGetMe: UserFromGetMe = {
-  id: 5637493633,
-  is_bot: true,
-  first_name: 'Función Privada 🥃',
-  username: 'FuncionPrivadaBot',
-  can_join_groups: true,
-  can_read_all_group_messages: false,
-  supports_inline_queries: false
-};
-
 const options = {
-  botInfo: userFromGetMe
+  botInfo: JSON.parse(BOT_INFO)
 }
 
 export const bot = new Bot(BOT_TOKEN, options);

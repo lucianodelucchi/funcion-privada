@@ -1,8 +1,16 @@
-import { WEBHOOK } from '$env/static/private';
+import { VITE_VERCEL_URL } from '$env/static/private';
 import { bot } from  '$lib/server/bot';
+import { error, type RequestEvent } from '@sveltejs/kit';
 
-export async function POST() {
-    const success = await bot.api.setWebhook(WEBHOOK);
+export async function POST({request}: RequestEvent) {
+    const { webhook_url } = await request.json();
+    const webhookUrl = VITE_VERCEL_URL ?? webhook_url;
+    
+    if (!webhookUrl) {
+        throw error(500);
+    }
+    
+    const success = await bot.api.setWebhook(`https://${webhookUrl}/api`);
     return new Response(String(success));
 }
 

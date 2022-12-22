@@ -1,1 +1,11 @@
 POST http://127.0.0.1:5173/api/webhook
+content-type: application/json
+
+{
+    "webhook_url": "plenty-ghosts-hear-188-115-7-71.loca.lt"
+}
+
+
+#####
+
+POST https://funcion-privada.vercel.app/api/webhook
