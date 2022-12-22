@@ -4,7 +4,7 @@ import { error, type RequestEvent } from '@sveltejs/kit';
 
 export async function POST({request}: RequestEvent) {
     const { webhook_url } = await request.json();
-    const webhookUrl = env?.VITE_VERCEL_URL ?? webhook_url;
+    const webhookUrl = env?.VERCEL_URL ?? webhook_url;
     
     if (!webhookUrl) {
         throw error(500);
