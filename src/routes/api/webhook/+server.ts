@@ -1,4 +1,4 @@
-import { VITE_VERCEL_URL } from '$env/static/private';
+import { VITE_VERCEL_URL } from '$env/dynamic/private';
 import { bot } from  '$lib/server/bot';
 import { error, type RequestEvent } from '@sveltejs/kit';
 
