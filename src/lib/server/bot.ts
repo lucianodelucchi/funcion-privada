@@ -22,6 +22,8 @@ bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
 
 bot.command("ping", (ctx) => ctx.reply(`Pong! 🏓 ${new Date()} ${Date.now()}`));
 
+bot.on('msg:text', ctx => ctx.reply('Say what?!?!'))
+
 bot.command("search", async (ctx) => {
   const searchTerm = ctx.match?.length == 0 ? 'airplane' : ctx.match;
   
@@ -31,7 +33,7 @@ bot.command("search", async (ctx) => {
     const results = moviesResponse.results?.slice(0, 10);
     let reply = '';
     for (const movie of results) {
-      reply += `🎬 *${addSlashes(movie.title)}* (*${addSlashes(movie.release_date)}*) 🎬 \n`;
+      reply += `🎬 *${addSlashes(movie.title)}* *${addSlashes(movie.release_date)}* 🎬 \n`;
     } 
     await ctx.reply(reply, { parse_mode: "MarkdownV2" });
     // const firstMovie = moviesResponse.results[0];
