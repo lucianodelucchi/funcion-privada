@@ -22,8 +22,6 @@ bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
 
 bot.command("ping", (ctx) => ctx.reply(`Pong! 🏓 ${new Date()} ${Date.now()}`));
 
-bot.on('msg:text', ctx => ctx.reply('Say what?!?!'))
-
 bot.command("search", async (ctx) => {
   const searchTerm = ctx.match?.length == 0 ? 'airplane' : ctx.match;
   
@@ -45,3 +43,5 @@ bot.command("search", async (ctx) => {
 
   await ctx.reply('No movies found 🤷🏼‍♂️');
 });
+
+bot.on('msg:text', ctx => ctx.reply('Say what?!?!'))
