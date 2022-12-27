@@ -28,10 +28,16 @@ bot.command("search", async (ctx) => {
   const moviesResponse = await search(searchTerm);
 
   if (moviesResponse.total_results ?? 0 > 0) {
-    const firstMovie = moviesResponse.results[0];
-    const images = await imagesForMovie(firstMovie.id);
-    const image = `${configuration.images.base_url}w342${images.posters[0].file_path}`;
-    await ctx.reply(`[🎬 *${addSlashes(firstMovie.title)}* 🎬](${image}) [_Data from TMDB_](https://www.themoviedb.org/)`, { parse_mode: "MarkdownV2" });
+    const results = moviesResponse.results?.slice(0, 10);
+    let reply = '';
+    for (const movie of results) {
+      reply += `🎬 *${addSlashes(movie.title)}* - (*${addSlashes(movie.release_date)}*) 🎬 \n`;
+    } 
+    await ctx.reply(reply);
+    // const firstMovie = moviesResponse.results[0];
+    // const images = await imagesForMovie(firstMovie.id);
+    // const image = `${configuration.images.base_url}w342${images.posters[0].file_path}`;
+    // await ctx.reply(`[🎬 *${addSlashes(firstMovie.title)}* 🎬](${image}) [_Data from TMDB_](https://www.themoviedb.org/)`, { parse_mode: "MarkdownV2" });
     return;
   }
 
