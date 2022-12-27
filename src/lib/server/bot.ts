@@ -33,7 +33,7 @@ bot.command("search", async (ctx) => {
     for (const movie of results) {
       reply += `🎬 *${addSlashes(movie.title)}* - (*${addSlashes(movie.release_date)}*) 🎬 \n`;
     } 
-    await ctx.reply(reply);
+    await ctx.reply(reply, { parse_mode: "MarkdownV2" });
     // const firstMovie = moviesResponse.results[0];
     // const images = await imagesForMovie(firstMovie.id);
     // const image = `${configuration.images.base_url}w342${images.posters[0].file_path}`;
