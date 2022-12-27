@@ -8,6 +8,10 @@ export const search = async (name: string) => {
     return await moviedb.searchMovie({query: name});
 }
 
+export const movie = async (id: number) => {
+    return await moviedb.movieInfo(id);
+}
+
 export const imagesForMovie = async (id: number) => {
     return await moviedb.movieImages(id);
 }
