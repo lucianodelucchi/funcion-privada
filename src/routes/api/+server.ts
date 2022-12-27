@@ -1,5 +1,3 @@
-import { error, json } from '@sveltejs/kit';
-import { env } from '$env/dynamic/private';
 import type { RequestEvent } from './$types';
 import { bot } from  '$lib/server/bot';
 
@@ -16,8 +14,4 @@ export async function POST({request}: RequestEvent) {
     }
 
     return new Response();
-}
-
-export async function GET() {
-    return json(env);
 }
